@@ -16,8 +16,14 @@ body {
 
 .about h1, .about h2, .about a {
     margin: 0px 0px 0px 0px;
+    font-family: Cousine,Verdana,sans-serif;
     text-decoration: none;
     color: #fff;
+}
+
+.about a {
+    font-family: Menlo,monospace,sans-serif;
+    font-size: 80%;
 }
 
 .about h1 {
@@ -34,7 +40,7 @@ body {
 .mario {
     background-image: url(../img/map.png);
     background-color: #3cbcfc;
-    position: absolute;
+    position: fixed;
     height: 448px;
     width: 100%;
     left: 0px;

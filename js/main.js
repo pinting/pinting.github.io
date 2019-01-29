@@ -1,28 +1,6 @@
-var mario;
-var remover;
+var character;
 var x = -100;
 var y = 330;
-
-$(document).ready(function() {
-    mario = $("#mario");
-    remover = setInterval(function() {
-        if(parseInt(mario.css("margin-left").replace("px", ""), 10) > $(window).width()) {
-            mario.remove();
-            clearInterval(remover);
-        }
-    }, 100);
-    
-    try {
-        start(1.35);
-    }
-    catch(e) {
-        return;
-    }
-});
-
-$(window).bind("touchmove", function(e) {
-    e.preventDefault();
-});
 
 function start(speed) {
     move(0, 0, 0);
@@ -63,15 +41,20 @@ function wait(speed) {
 }
 
 function move(left, top, speed) {
-    if(mario == null || mario[0] == null) {
-        throw new Error();
-    }
-    
     x += left;
     y += top;
     
-    mario.animate({
+    character.animate({
         marginLeft: x,
         marginTop: y
     }, speed);
 }
+
+$(window).bind("touchmove", function(e) {
+    e.preventDefault();
+});
+
+$(document).ready(function() {
+    character = $("#mario");
+    start(1.35);
+});
