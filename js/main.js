@@ -1,3 +1,8 @@
+/*
+ * An ancient piece of code from 2010 that I kept.
+ * It is history now.
+ */
+
 var character;
 var x = -100;
 var y = 330;
