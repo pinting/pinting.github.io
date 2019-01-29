@@ -1,3 +1,3 @@
 # pinting.hu
 
-This my personal website which I created in 2010. It uses jQuery to show the visitor some quite laggy animation, but it is nice and I kept it up.
+This is my home page which I created back in 2010. I kept the logic the same, because I love how these ancient codes work.
