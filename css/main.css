@@ -15,7 +15,7 @@ body {
 }
 
 .about h1, .about h2, .about a {
-    font-family: Menlo,monospace,sans-serif;
+    font-family: sans-serif;
     margin: 0px 0px 0px 0px;
     text-decoration: none;
     color: #fff;
