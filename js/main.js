@@ -1,6 +1,5 @@
 /*
- * An ancient piece of code from 2010 that I kept.
- * It is history now.
+ * An ancient piece of code that I kept from 2010.
  */
 
 var character;
