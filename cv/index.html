@@ -149,6 +149,10 @@
             color: inherit;
         }
 
+        .project a {
+            text-decoration: none;
+        }
+
         a:hover {
             color:#39f
         }
@@ -185,7 +189,7 @@
             <h1>
                 <a href="https://pinting.github.io/me" style="text-decoration: none; color: inherit;">Denes Tornyi</a>
             </h1>
-            <h2 id="about">About</h2>
+            <h2 class="about">About</h2>
             <ul>
                 <li>
                     <a href="https://pinting.github.io">pinting.github.io</a>
@@ -198,10 +202,33 @@
                 </li>
             </ul>
             <p style="text-align: justify;">I was born in Hungary in 1996. I got involved with web development during my elementary school years which steered me in the direction of becoming a software engineer. In 2014, during my senior year in high school, I was hired to develop an instant messaging system for a startup company. The company proceeded to declare bankruptcy while I was still working on the project so I had to start looking for new opportunities.</p>
-            <p style="text-align: justify;">In 2015, I began studying computer engineering in Budapest. At this point, I was focusing on enterprise application development while I was simultaneously becoming more and more interested in the contemporary art scene and video game development. However, it started to seem like my university education had less and less to offer to me. I wanted to get some hands-on experience so I dropped out and became a full-time employee at Accedo, an OTT company that I am still currently working for. My job involves smart television application development and the construction of internal tools and processes. In my free time, I started to invest more energy into video game development. My first project in this new field was a web-based 2D game engine called RoboLand. Towards the end of 2019, I decided to take a break to visit Yogyakarta, Indonesia.</p>
+            <p style="text-align: justify;">In 2015, I began studying computer engineering in Budapest. At this point, I was focusing on enterprise application development while I was simultaneously becoming more and more interested in the contemporary art scene and video game development. However, it started to seem like my university education had less and less to offer to me. I wanted to get some hands-on experience so I dropped out and became a full-time employee at Accedo, an OTT company. My job involved smart television application development and the construction of internal tools and processes. In my free time, I started to invest more energy into video game development. My first project in this new field was a web-based 2D game engine called RoboLand. Towards the end of 2019, I decided to take a break to visit Yogyakarta, Indonesia.</p>
             <p style="text-align: justify;">I then relocated to Guadalajara, Mexico at the beginning of 2020 to work at the local Accedo office. The pandemic outbreak had forced all employees of the company to work from home which is where I started coming up with the concept for FreakShow, a point and click adventure game I am currently working on. The idea was to use photographic input to create visually abstract, interactive scenes with an alienated, post-communist aesthetic. The first version of this game was displayed at a contemporary art exhibition in 2020 September and the second version was presented on a solo exhibition a month later in October.</p>
             <p style="text-align: justify;">I thrive on interdisciplinary environments as my goal is to integrate different fields of art and technology. Due to my expertise in software development, I can provide a solid technical background to any outside-of-the-box art project or bring an artistic flair to more tech-heavy tasks. Whether you are looking for a video game programmer with an artistic flair or a skilled web developer, feel free to contact me with the details.</p>
-            <h2 id="education">Education</h2>
+            <div style="page-break-after: always;"></div>
+            <h2 class="references">References</h2>
+            <p>
+                <code class="highlighter-rouge">2018 – 2021</code>
+                <strong>Accedo Broadband HU Kft.</strong>
+            </p>
+            <ul>
+                <li>The main profile of the company was OTT applications for Android, iOS, WebOS, Tizen, and Web. In the first year, I was a member of the production team, working on several projects for American and Middle-Eastern clients. These were <u>JavaScript/React based applications</u>, integrated with 3rd party content providers. Later, I made a move to the support team, where I focused on delivery optimization. Using <u>Docker</u>, I could introduce <u>CI for Tizen and WebOS platforms</u> thus saving hundreds of hours of work time per year. During my support years, I had the opportunity to relocate temporarily to Guadalajara, Mexico.</li>
+            </ul>
+            <p>
+                <code class="highlighter-rouge">2017 – 2018</code>
+                <strong>OTT-ONE Nyrt.</strong>
+            </p>
+            <ul>
+                <li>In the beginning, I was given the task to design a recurring payment system using 3rd party payment API. This did not involve any client-side development, only designing and implementing a REST API. Later I was moved to the development of an e-learning platform. This was done using <u>TypeScript</u>, <u>Angular</u>, <u>NodeJS</u>, and <u>MongoDB</u>.</li>
+            </ul>
+            <p>
+                <code class="highlighter-rouge">2014 – 2015</code>
+                <strong>Youwon Hungary Kft.</strong>
+            </p>
+            <ul>
+                <li>The company was trying to build an online second-hand trading platform. The client-side was built using <u>TypeScript</u> and <u>AngularJS</u>. <u>MongoDB</u> was chosen as the database engine. A monolithic middleware was designed which communicated with the database using <u>Entity Framework</u>. Both traditional HTTP based REST API and WebSocket based channels were available for communication with the middleware. These channels were built using <u>ASP.NET Web API</u> mixed with <u>SignalR</u>. Indexing was done using <u>Apache Lucene</u>. My role was designing and implementing an instant messaging and a video calling service using <u>WebRTC</u>.</li>
+            </ul>
+            <h2 class="education">Education</h2>
             <p>
                 <code class="highlighter-rouge">2015 - x</code>
                 <strong>Budapest University of Technology and Engineering</strong>
@@ -210,66 +237,43 @@
                 <li>IT Engineer BA</li>
             </ul>
             <div style="page-break-after: always;"></div>
-            <h2 id="references">References</h2>
-            <p>
-                <code class="highlighter-rouge">2018 – 2021</code>
-                <strong>Accedo Broadband HU Kft.</strong>
-            </p>
-            <ul>
-                <li>The main profile of the company during the time I have spent there was video-on-demand applications for Android, iOS, WebOS, Tizen, and Web. In the first year, I was a member of the production team, working on several VOD projects for American and Middle-Eastern clients. These were JavaScript/React based application, integrated with 3rd party content providers. Later, I made a move to the support team, where I focused on delivery optimization. Using Docker, I could introduce CI for Tizen and WebOS platforms thus saving hundreds of hours of work time per year. During my support years, I had the opportunity to relocate temporarily to Mexico, Guadalajara.</li>
-            </ul>
-            <p>
-                <code class="highlighter-rouge">2017 – 2018</code>
-                <strong>OTT-ONE Nyrt.</strong>
-            </p>
-            <ul>
-                <li>In the beginning, I was given the task to design a credit card payment system using Barion API. This did not involve any client-side development, only designing and implementing a REST API. Later I was moved to the development of an e-learning platform. This was done using TypeScript, Angular (version 2), NodeJS, and MongoDB.</li>
-            </ul>
-            <p>
-                <code class="highlighter-rouge">2014 – 2015</code>
-                <strong>Youwon Hungary Kft.</strong>
-            </p>
-            <ul>
-                <li>The company was trying to build an online second-hand trading platform. The client-side was built using TypeScript and AngularJS (version 1.8). MongoDB was chosen as the database engine. A monolithic middleware was designed which communicated with the database using Entity Framework. Both traditional HTTP based REST API and WebSocket based channels were available for communication with the middleware. These channels were built using ASP.NET Web API mixed with SignalR. Indexing was done using Apache Lucene. My role was designing and implementing an instant messaging and a video calling service using WebRTC.</li>
-            </ul>
-            <div style="page-break-after: always;"></div>
-            <h2 id="projects">Projects</h2>
-            <p>
+            <h2 class="projects">Projects</h2>
+            <p class="project">
                 <code class="highlighter-rouge">2020 - </code>
-                <a href="https://github.com/pinting/FreakShow">FreakShow</a>
+                <a href="https://github.com/pinting/FreakShow"><strong>FreakShow</strong></a>
             </p>
             <ul>
                 <li>A photo-based video game experiment. Characters are real people captured in front of a green screen. Environmental textures, graffiti, paper ads and signs were captured in Budapest and Berlin.</li>
             </ul>
-            <p>
+            <p class="project">
                 <code class="highlighter-rouge">2020</code>
-                <a href="https://github.com/pinting/SnakeAI">SnakeAI</a>
+                <a href="https://github.com/pinting/SnakeAI"><strong>SnakeAI</strong></a>
             </p>
             <ul>
-                <li>A web browser compatible fork of a neural network powered genetic algorithm that learns how to play snake. This is my entry project to the field of artificial intelligence.</li>
+                <li>A web browser compatible fork of a <u>neural network powered genetic algorithm</u> that learns how to play snake. This is my entry project to the field of artificial intelligence.</li>
             </ul>
-            <p>
+            <p class="project">
                 <code class="highlighter-rouge">2018 - </code>
-                <a href="https://github.com/pinting/RoboLand">RoboLand</a>
+                <a href="https://github.com/pinting/RoboLand"><strong>RoboLand</strong></a>
             </p>
             <ul>
-                <li>A web based 2D video game engine with peer to peer networking. WebGL renderer, collision detection, basic physics, saving & loading and network optimizations are included and editor tools are present.</li>
+                <li>A web based 2D video game engine with peer to peer networking. <u>WebGL</u> renderer, collision detection, basic physics, saving & loading and network optimizations are included and editor tools are present.</li>
             </ul>
-            <p>
+            <p class="project">
                 <code class="highlighter-rouge">2013 - 2017</code>
-                <a href="https://github.com/pinting/SharpCrop">SharpCrop</a>
+                <a href="https://github.com/pinting/SharpCrop"><strong>SharpCrop</strong></a>
             </p>
             <ul>
-                <li>A screen capture utility with Dropbox, Google Drive and OneDrive integration. The development started with Python in 2013 under the name JamCrop, using Tk and later Qt as user interface toolkit. Two years later the same functionality was ported to C# using WebForms and renamed to SharpCrop.</li>
+                <li>A screen capture utility with Dropbox, Google Drive and OneDrive integration. The development started with <u>Python</u> in 2013 under the name JamCrop, using <u>Tk</u> and later <u>Qt</u> as user interface toolkit. Two years later the same functionality was ported to <u>C#</u> using <u>WebForms</u> and renamed to SharpCrop.</li>
             </ul>
-            <p>
+            <p class="project">
                 <code class="highlighter-rouge">2015 - 2016</code>
-                <a href="https://github.com/pinting/Jeversi">Jeversi</a>
+                <a href="https://github.com/pinting/Jeversi"><strong>Jeversi</strong></a>
             </p>
             <ul>
-                <li>A reversi board game implementation. Originally it was written in C using only the stdin and stdout, later it was ported to Java Swing and after to Android.</li>
+                <li>A reversi board game implementation. Originally it was written in <u>C</u> using only the stdin and stdout, later it was ported to <u>Java</u> using <u>Swing</u> and after to <u>Android</u>.</li>
             </ul>
-            <h2 id="languages">Languages</h2>
+            <h2 class="languages">Languages</h2>
             <p>
                 Hungarian native<br />
                 English fluent<br />
