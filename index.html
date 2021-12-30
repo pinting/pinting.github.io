@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>slash slash pinting</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Tornyi Dénes">
+    <meta name="keywords" content="tornyi, denes, dénes, pinting">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75, maximum-scale=0.75, user-scalable=no">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-image: url(ground.png);
+            background-color: #fc9838;
+            overflow: hidden;
+        }
+
+        .address {
+            font-style: normal;
+        }
+
+        .about {
+            position: absolute;
+            left: 20px;
+            top: 18px;
+        }
+
+        .about h1, .about h2, .about a {
+            font-family: sans-serif;
+            margin: 0px 0px 0px 0px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .about h1 {
+            font-weight: 400;
+            font-size: 2.3em;
+        }
+
+        .about h2 {
+            margin: 0px 0 0 2px;
+            font-style: italic;
+            font-weight: 100;
+            font-size: 0.8em;
+        }
+
+        .top {
+            background-image: url(surface.png);
+            background-color: #3cbcfc;
+            position: fixed;
+            height: 448px;
+            width: 100%;
+            left: 0px;
+            top: 0px;
+        }
+
+        .top .character {
+            background-image: url(character.gif);
+            height: 54px;
+            width: 46px;
+        }
+
+        .top .surface {
+            pointer-events: none;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="about">
+            <div class="address">
+                    <h1>Denes Tornyi</h1>
+                    <h2>
+                        <a href="https://pinting.github.io/cv/index.html">cv</a>&nbsp;｜&nbsp;
+                        <a href="mailto:astameteo@posteo.net">email</a>&nbsp;｜&nbsp;
+                        <a href="https://github.com/pinting">github</a>&nbsp;｜&nbsp;
+                        <a href="https://www.instagram.com/astameteo">instagram</a>
+                    </h2>
+            </div>
+        </div>
+        <div class="surface">
+            <div class="character" id="character"></div>
+        </div>
+    </div>
+    <script>
+        var x = -100;
+        var y = 330;
+
+        function start(element, speed) {
+            move(element, 0, 0, 0);
+            wait(element, 500);
+            run(element, 810, 4000 / speed);
+            jumpUp(element, -224);
+            run(element, 150, 1400 / speed);
+            jumpDown(element, 224);
+            run(element, 650, 3600 / speed);
+            jumpUp(element, -255);
+            run(element, 365, 2000 / speed);
+            jumpDown(element, 255);
+            run(element, 550, 3600 / speed);
+            jumpUp(element, -190);
+            run(element, 130, 1300 / speed);
+            jumpDown(element, 190);
+            run(element, 8000, 26000 / speed);
+        }
+
+        function jumpDown(element, h) {
+            move(element, 40, -36, 50);
+            move(element, 10, 0, 50);
+            move(element, 10, 0, 40);
+            move(element, 50, h + 36, 400);
+        }
+
+        function jumpUp(element, h) {
+            move(element, 10, h - 22, 500);
+            move(element, 10, 22, 200);
+        }
+
+        function run(element, w, speed) {
+            move(element, w, 0, speed);
+        }
+
+        function wait(element, speed) {
+            move(element, 0, 0, speed);
+        }
+
+        function move(element, w, h, speed) {
+            x += w;
+            y += h;
+            
+            element.animate({
+                marginLeft: x,
+                marginTop: y
+            }, speed);
+        }
+
+        $(window).bind("touchmove", function(e) {
+            e.preventDefault();
+        });
+
+        start($("#character"), 1.35);
+    </script>
+</body>
+</html>
