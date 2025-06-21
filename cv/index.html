@@ -218,17 +218,12 @@
             </p>
             <ul>
                 <li>
-                    Design and implement a RAG (retrieval-augmented generation) Golang-based pipeline, consisting of multi-threaded scraper services that synchronize data from third-party services into a centralized PostgreSQL database; processor services that detect raw data changes in the database and commit transformations on them; a chunking service that breaks processed documents into fragments; an embedding service based on the open-source BGE-M3 model; another embedding service based on an internally developed BM25 sparse embedder with a single-pass wordification algorithm; a migration service that pushes changes from the SQL database to either Milvus or Qdrant vector databases; and a retrieval service that performs hybrid search in the vector database. Gemma 3rd generation and Llama 3rd generation models are used as LLMs. The solution is deployed on Docker Compose and uses SQL/gRPC for communication between services.
+                    Architected and implemented a Golang-based retrieval-augmented generation (RAG) pipeline that begins with multi-threaded scraper services responsible for synchronizing data from external APIs into a centralized PostgreSQL database. Processor services continuously monitor the database for raw data changes and apply a series of transformations (including HTML to Markdown conversion, LLM-driven summarization, and LLM-based validation) to ensure content consistency and quality. Once transformed, documents are handed off to a chunking service that partitions them into discrete fragments optimized for embedding. Two embedding services then generate vector representations: a dense embedding service leveraging Hugging Face TEI and a sparse embedding service powered by a custom TF-IDF statistical model with a single-pass wordification and dictionary-building algorithm. An indexer service exports these embeddings from PostgreSQL and ingests them into Qdrant and Milvus vector databases, enabling efficient retrieval. Finally, a retrieval service performs hybrid searches by combining vector similarity and sparse index lookups, delivering precise and contextually relevant results. Gemma 3rd-generation and Llama 3rd-generation LLMs are employed throughout for summarization and validation tasks, and the entire solution is deployed via Docker Compose, using HTTP/1.1 and SQL for inter-service communication.
 
                     <br />
                     <br />
  
-                    In addition to the main project, conducted an experiment on an architecture based around PostgreSQL. The idea was to use PGRX to write extensions in Rust to reduce gRPC/SQL communication overhead between services and integrate everything (chunking, embedding, retrieving) into a single monolithic database process. The experiment relied on fastembed and pgvector, with the latter proving to lag behind in search speed compared to Milvus and Qdrant.
-                    
-                    <br />
-                    <br />
-                    
-                    Develop multiple proof-of-concept projects, including a graph-world "video game" where an LLM explores nodes and their data to find answers to user questions. Most of the development is done in Golang.
+                    In addition to the main project, conducted an experiment on an architecture based around PostgreSQL. The idea was to use PGRX to write extensions in Rust to reduce HTTP 1.1 / SQL communication overhead between services and integrate everything (chunking, embedding, retrieving) into a single monolithic database process. The experiment relied on fastembed and pgvector, with the latter proving to lag behind in search speed compared to Milvus and Qdrant.
                     
                     <br />
                     <br />
