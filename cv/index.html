@@ -232,31 +232,31 @@
                     <br />
                     <br />
 
-                    – Scraper services synchronized data from external APIs (Jira, GitLab, Confluence, Zendesk and manual uploads) into PostgreSQL. Attachments (PDF / Word / Excel documents and images) were also fetched and stored in an S3-compatible object storage (MinIO).
+                    – The scraper services synchronized data from external APIs (Jira, GitLab, Confluence, Zendesk and manual uploads) into PostgreSQL. Attachments (PDF / Word / Excel documents and images) were also fetched and stored in an S3-compatible object storage (MinIO).
 
                     <br />
 
-                    – Processor services were responsible for transforming scraped raw data into Markdown documents. This included converting HTML to Markdown; summarizing Git differences using LLMs; converting PDF / Word / Excel documents to text using IBM's Docling solution.
+                    – The processor services were responsible for transforming scraped raw data into Markdown documents. This included converting HTML to Markdown; summarizing Git differences using LLMs; converting PDF / Word / Excel documents to text using IBM's Docling solution.
 
                     <br />
 
-                    – A validation service was responsible for IDF-based document scoring, which involved summing the top N highest ranking IDF terms in each of the generated Markdown documents. Only documents exceeding a predefined threshold were retained for further processing.
+                    – The validation service was responsible for IDF-based document scoring, which involved summing the top N highest ranking IDF terms in each of the generated Markdown documents. Only documents exceeding a predefined threshold were retained for further processing.
 
                     <br />
 
-                    – A chunking service that partitioned documents into optimized fragments for embedding, employing an algorithm that tried to reach the minimum chunk size by slicing between paragraphs, sentences, words or characters in descending priority.
+                    – The chunking service that partitioned documents into optimized fragments for embedding, employing an algorithm that tried to reach the minimum chunk size by slicing between paragraphs, sentences, words or characters in descending priority.
 
                     <br />
 
-                    – Embedding services generating vector representations: a dense embedding service using Hugging Face TEI (with recent Qwen models) and a sparse embedding service powered by a custom-built BM25 ranking model with single-pass wordification algorithm and TF-IDF dictionary construction.
+                    – The embedding services generating vector representations: a dense embedding service using Hugging Face TEI (with recent Qwen models) and a sparse embedding service powered by a custom-built BM25 ranking model with single-pass wordification algorithm and TF-IDF dictionary construction.
 
                     <br />
 
-                    – An indexer service that exported embeddings from PostgreSQL to Qdrant or Milvus vector databases for efficient retrieval.
+                    – The indexer service that exported embeddings from PostgreSQL to Qdrant or Milvus vector databases for efficient retrieval.
 
                     <br />
 
-                    – A proxy service that performed hybrid search (through the indexer service) and implemented the de facto OpenAI LLM interface, enabling any third-party UI to interact with it as a standard LLM.
+                    – The proxy service that performed hybrid search (through the indexer service) and implemented the de facto OpenAI LLM interface, enabling any third-party UI to interact with it as a standard LLM.
 
                     <br />
                     <br />
