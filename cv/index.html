@@ -205,32 +205,71 @@
             <p>
                 <br />
             </p>
-            <p style="text-align: justify;">I thrive in interdisciplinary environments, as my goal is to integrate different fields of art and technology by making connections. I believe that human development is driven more by emotion than by technology alone. I wish to believe in a society where people are not just building blocks, but individuals who actively take part in the system they form.</p>
-            <p style="text-align: justify;">Born in 1996. My earliest exposure to technology was the single computer in our household, which did not have an internet connection. I spent my days playing video games and exploring the file system, clicking on every installed executable and daydreaming about a database engine that could link documents and render text, images, and videos seamlessly. During the summer of 2006, I stumbled upon the digital manual of the video game "StarCraft" written in HTML3 and was astonished by the rendering capabilities of Internet Explorer 6. Despite having no knowledge of English and no formal training, I learned HTML by dissecting the manual's source code.</p>
-            <p style="text-align: justify;">Since that summer, my passion for learning has only grown stronger. In recent years, I have experimented with various technologies, including <a href="https://github.com/pinting/RoboLand">a WebRTC-powered peer-to-peer 2D video game engine written in TypeScript</a>, <a href="https://github.com/pinting/FreakShow">an artistic video game exploring the feeling of solitude built in Godot 3</a>, and a weekend project creating <a href="https://github.com/pinting/InGameTranslator">an OCR-powered screen translator using a DirectX hook</a>, among many <a href="https://github.com/pinting?tab=repositories">other ventures</a>.</p>
-            <p style="text-align: justify;">In my career, I moved from writing business logic to designing data pipelines. I am curious about the hidden structure of language models. I question whether contextual vectors might be sums of many individual features, and whether links between concepts are already inherent in the latent vector space. I am spending my time studying and thinking about these questions as I wish to contribute to research in this area.</p>
-            <p style="text-align: justify;"></p>
+            <p style="text-align: justify;">I thrive in interdisciplinary environments, as my goal is to integrate different perspectives of existence. I believe that human development is driven more by emotion than by technology alone. I wish to believe in a society where people are not just building blocks, but individuals who actively take part in the system they form.</p>
+            <p style="text-align: justify;">Born in 1996. My earliest exposure to technology was the single computer in our household without an internet connection. I spent my days playing video games and exploring the file system, clicking on every installed executable and daydreaming about a database engine that could link documents and render multimedia content seamlessly. During the summer of 2006, I stumbled upon the digital manual of the video game "StarCraft" written in HTML3 and was astonished by the rendering capabilities of Internet Explorer 6. Despite having no knowledge of English and no formal training, I learned HTML by dissecting the source code of the manual.</p>
+            <p style="text-align: justify;">Since that summer, my passion for learning has never faded. I have experimented with various technologies, including cross-platform desktop applications, web applications, embedded applications and video-game projects. Recently, I have focused on the advancements in natural language processing (NLP) and conducted research on constraining LLMs.</p>
+            <p style="text-align: justify;">Besides working, I am a Linux and FOSS enthusiast; in love with literature, poetry, music, theater and cinema.</p>
             <div style="page-break-after: always;"></div>
             <h2 class="references">References</h2>
             <p>
-                <code class="highlighter-rouge">2024 Mar – </code>
+                <code class="highlighter-rouge">2024 Mar – 2025 Dec</code>
                 <strong>Nokia Solutions and Networks Kft.</strong>
             </p>
             <ul>
                 <li>
-                    Architected and implemented a Go-based retrieval-augmented generation (RAG) pipeline that begins with multi-threaded scraper services responsible for synchronizing data from external APIs into a centralized PostgreSQL database. Services do not continuously watch for changes: each runs on its own schedule (depending on whether its dependencies are met). Processor services read raw data from PostgreSQL and produce Markdown documents (e.g. by converting HTML to Markdown). An IDF-based document validation layer vets the generated Markdown before it proceeds to the next stage. A chunking service partitions documents into discrete fragments optimized for embedding. Two embedding services generate vector representations: a dense embedding service leveraging Hugging Face TEI and a sparse embedding service powered by a BM25 ranking model (implemented from scratch) along with a single-pass wordification and TF-IDF dictionary-building algorithm. An indexer service exports embeddings from PostgreSQL and ingests them into Qdrant and Milvus vector databases to enable efficient retrieval. The retrieval service performs hybrid searches by fusing the two vectors spaces to deliver precise, contextually relevant results. The entire solution is deployed via Docker Compose and uses HTTP/1.1 and SQL for inter-service communication.
+                    Returned to Nokia with the goal of continueing my research on LLMs and RAG systems. Established "Project Octopus" as a centralized project space for publishing and inner-sourcing NLP solutions across the company. Collaborated with various departments to streamline and reduce the internal chaos within R&D operations.
 
                     <br />
                     <br />
- 
-                    In addition to the main project, conducted an experiment on an architecture based around PostgreSQL. The idea was to use PGRX to write extensions in Rust to reduce HTTP 1.1 / SQL communication overhead between services and integrate everything (chunking, embedding, retrieving) into a single monolithic database process. The experiment relied on fastembed and pgvector, with the latter proving to lag behind in search speed compared to Milvus and Qdrant.
-                    
+
+                    Conducted an experiment on an architecture on PostgreSQL, utilizing PGRX to write Rust-based extensions that minimized HTTP 1.1/SQL communication overhead between services. The design integrated chunking, embedding, and retrieval into a single monolithic database process using fastembed and pgvector. Performance benchmarks revealed that pgvector lagged behind Milvus and Qdrant in search speed which halted further development.
+
                     <br />
                     <br />
-                    
-                    Collaborate with various departments to reduce internal chaos within Nokia and create an internal project space for sharing all research, contributing many packages. Actively mentor junior colleagues.
+
+                    Architected and implemented a microservice based retrieval-augmented generation (RAG) pipeline comprising multiple independent (Go-based) services that coordinated through a shared PostgreSQL database. The entire solution was deployed via Docker containers and used HTTP/1.1 and SQL for inter-service communication.
+
+                    <br />
+                    <br />
+
+                    – Scraper services synchronized data from external APIs (Jira, GitLab, Confluence, Zendesk and manual uploads) into PostgreSQL. Attachments (PDF / Word / Excel documents and images) were also fetched and stored in an S3-compatible object storage (MinIO).
+
+                    <br />
+
+                    – Processor services were responsible for transforming scraped raw data into Markdown documents. This included converting HTML to Markdown; summarizing Git differences using LLMs; converting PDF / Word / Excel documents to text using IBM's Docling solution.
+
+                    <br />
+
+                    – A validation service was responsible for IDF-based document scoring, which involved summing the top N highest ranking IDF terms in each of the generated Markdown documents. Only documents exceeding a predefined threshold were retained for further processing.
+
+                    <br />
+
+                    – A chunking service that partitioned documents into optimized fragments for embedding, employing an algorithm that tried to reach the minimum chunk size by slicing between paragraphs, sentences, words or characters in descending priority.
+
+                    <br />
+
+                    – Embedding services generating vector representations: a dense embedding service using Hugging Face TEI (with recent Qwen models) and a sparse embedding service powered by a custom-built BM25 ranking model with single-pass wordification algorithm and TF-IDF dictionary construction.
+
+                    <br />
+
+                    – An indexer service that exported embeddings from PostgreSQL to Qdrant or Milvus vector databases for efficient retrieval.
+
+                    <br />
+
+                    – A proxy service that performed hybrid search (through the indexer service) and implemented the de facto OpenAI LLM interface, enabling any third-party UI to interact with it as a standard LLM.
+
+                    <br />
+                    <br />
+
+                    As the RAG pipeline matured, "gonokia", a repository of reusable Go packages for cross-project code sharing was published. The most notable package was "archive," which solved the algorithmically complex challenge of orchestrating multiple concurrent streams into a single stream, enabling parallel log collection from K8s nodes and on-the-fly merging the incoming log streams into a single tape archive (TAR or ZIP). Another key innovation was the "httpdump" package, providing a transparent HTTP transport middleware for capturing, dumping and replaying HTTP network communication. Additionally, reusable API clients for Jira, GitLab, Confluence and Zendesk were built.
+
+                    <br />
+                    <br />
+
+                    Conducted research in collaboration with <a href="https://github.com/alonsosilvaallende">Alonso Silva</a> from Bell Labs. Architected and implemented a Go-based interpreter state machine that enforced SQL language constraints during SELECT query generation, ensuring field and table consistency throughout the prediction process. The engine translated grammar rules into an inflatable graph of nodes where each node was decomposed to a token trie (utilizing a cache to reduce computational waste). Navigating the graph (by reaching one of the terminating tokens of the token trie of a node) resulted in a state change which influenced the generation of the children nodes (thus creating the foundation for semantical enforcement). The engine was integrated into a custom logits processor implementation of llama.cpp to guide LLMs toward generating grammatically and semantically correct SELECT queries.
                 </li>
             </ul>
+            <div style="page-break-after: always;"></div>
             <p>
                 <code class="highlighter-rouge">2023 Aug – 2024 Jan</code>
                 <strong>ScoutinScience B.V.</strong>
@@ -239,7 +278,6 @@
                 <li>
                     Designed and implemented a matchmaking system to link Dutch companies with university graduates by processing company websites and students' theses using LLMs (Llama 2nd generation, Mistral 1st generation models) and sentence embedding technologies (SBERT). The solution consisted of 4 different components: a data pipeline written in Python; a .NET-based back-end; a ReactJS-based front-end and an SQL database storing raw and processed data. Beside the main project, conducted code reviews, refined CI/CD of the company and refactored the existing architeture of user management.</li>
             </ul>
-            <div style="page-break-after: always;"></div>
             <p>
                 <code class="highlighter-rouge">2022 Mar – 2023 Jun</code>
                 <strong>Nokia Solutions and Networks Kft.</strong>
@@ -273,7 +311,7 @@
                     <br />
                     <br />
 
-                    Designed and implemented a telecommunication service using WebRTC and SignalR over the existing architecture: enabling audio/video calls, managing message history and synchronizing ongoing conversation tabs across devices.
+                    Designed and implemented a Messenger like service using WebRTC and SignalR over the existing architecture: enabling audio/video calls, text messages along with message history and synchronizing ongoing conversation tabs across devices.
                 </li>
             </ul>
             <h2 class="languages">Languages</h2>
