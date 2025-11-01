@@ -6,7 +6,6 @@
     <meta name="keywords" content="tornyi, denes, dénes, pinting">
     <title>Denes Tornyi's CV</title>
     <style>
-        /* reset */
         html, body, div, span, applet, object, iframe,
         h1, h2, h3, h4, h5, h6, p, blockquote, pre,
         a, abbr, acronym, address, big, cite, code,
@@ -56,8 +55,6 @@
             border-spacing: 0;
         }
 
-        /* end of reset */
-
         body {
             font: normal normal 400;
             font-size: 80%;
@@ -69,10 +66,10 @@
 
         p {
             position: relative;
-            left: 33%;
+            left: 14%;
             margin-bottom: 0.7em;
             margin-right: 0;
-            width: 65%;
+            width: 80%;
         }
 
         code {
@@ -84,33 +81,49 @@
 
         p code {
             position: absolute;
-            left: -22%;
+            left: -18%;
+            width: 16%;
+            text-align: right;
         }
 
-        ul { 
+        .contact-list {
             position: relative;
-            left: 33%;
-            width: 65%;
+            left: 14%;
+            width: 80%;
             margin-bottom: 1.5em;
             margin-top: -0.5em;
         }
 
-        li {
+        .contact-list div {
             padding-left: 0;
             text-indent: 0;
         }
 
-        li ul {
+        .reference-item {
+            position: relative;
+            left: 14%;
+            width: 80%;
+            margin-bottom: 1.5em;
+        }
+
+        .reference-item ul {
             position: relative;
             left: 0;
             width: 100%;
-            margin-top: 0.25em;
+            margin-top: 0.5em;
+            list-style: square;
+            padding-left: 1.5em;
+        }
+
+        .reference-item li {
+            margin-bottom: 0.5em;
+            text-align: justify;
         }
 
         h1, h2, h3, h4 {
             font-weight: 400;
             font-family: Cousine,Verdana,sans-serif;
-            width: 65%;
+            width: 80%;
         }
 
         h1 {
@@ -118,10 +131,10 @@
             font-size: 3em;
             line-height: 1em;
             position: relative;
-            left: 33%;
+            left: 14%;
         }
 
-        h1+p {
+        h1+.contact-list {
             font-style: italic;
             font-size: 110%;
         }
@@ -129,11 +142,11 @@
         h2 {
             font-size: 1.1em;
             margin-top: 3em;
+            margin-bottom: 1em;
             position: relative;
             color: #333333;
-            top: 1.4em;
-            text-align: right;
-            width: 10%;
+            left: 14%;
+            width: 80%;
         }
 
         h3 {
@@ -142,7 +155,7 @@
             position: relative;
             top: 1.7em;
             text-align: right;
-            width: 20%;
+            width: 16%;
         }
 
         a {
@@ -175,11 +188,18 @@
             background-size: cover;
             width: 140px;
             height: 140px;
-            top: 10px;
-            right: 10px;
+            right: 4%;
             margin: 5px 25px;
             position: absolute;
             border-radius: 50%;
+        }
+
+        i {
+            font-style: italic;
+        }
+
+        b {
+            font-weight: bold;
         }
     </style>
 </head>
@@ -187,24 +207,19 @@
     <div class="avatar"></div>
     <div class="top">
         <div>
-            <h1>
-                Denes Tornyi
-            </h1>
+            <h1>Dénes Tornyi</h1>
             <h2 class="about">About</h2>
-            <ul>
-                <li>
+            <div class="contact-list">
+                <div>
                     <a href="https://pinting.github.io">pinting.github.io</a>
-                </li>
-                <li>
+                </div>
+                <div>
                     <a href="mailto:astameteo@posteo.net">astameteo@posteo.net</a>
-                </li>
-                <li>
+                </div>
+                <div>
                     <a href="https://github.com/pinting">github.com/pinting</a>
-                </li>
-            </ul>
-            <p>
-                <br />
-            </p>
+                </div>
+            </div>
             <p style="text-align: justify;">I thrive in interdisciplinary environments, as my goal is to integrate different perspectives of existence. I believe that human development is driven more by emotion than by technology alone. I wish to believe in a society where people are not just building blocks, but individuals who actively take part in the system they form.</p>
             <p style="text-align: justify;">Born in 1996. My earliest exposure to technology was the single computer in our household without an internet connection. I spent my days playing video games and exploring the file system, clicking on every installed executable and daydreaming about a database engine that could link documents and render multimedia content seamlessly. During the summer of 2006, I stumbled upon the digital manual of the video game "StarCraft" written in HTML3 and was astonished by the rendering capabilities of Internet Explorer 6. Despite having no knowledge of English and no formal training, I learned HTML by dissecting the source code of the manual.</p>
             <p style="text-align: justify;">Since that summer, my passion for learning has never faded. I have experimented with various technologies, including cross-platform desktop applications, web applications, embedded applications and video-game projects. Recently, I have focused on the advancements in natural language processing (NLP) and conducted research on constraining LLMs.</p>
@@ -215,110 +230,89 @@
                 <code class="highlighter-rouge">2024 Mar – 2025 Dec</code>
                 <strong>Nokia Solutions and Networks Kft.</strong>
             </p>
-            <ul>
-                <li>
-                    Returned to Nokia with the goal of continueing my research on LLMs and RAG systems. Established "Project Octopus" as a centralized project space for publishing and inner-sourcing NLP solutions across the company. Collaborated with various departments to streamline and reduce the internal chaos within R&D operations.
+            <div class="reference-item">
+                Returned to Nokia with the goal of continueing my research on LLMs and RAG systems. Established "Project Octopus" as a centralized project space for publishing and inner-sourcing NLP solutions across the company. Collaborated with various departments to streamline and reduce the internal chaos within R&D operations.
 
-                    <br />
-                    <br />
+                <br />
+                <br />
 
-                    Conducted an experiment on an architecture on PostgreSQL, utilizing PGRX to write Rust-based extensions that minimized HTTP 1.1/SQL communication overhead between services. The design integrated chunking, embedding, and retrieval into a single monolithic database process using fastembed and pgvector. Performance benchmarks revealed that pgvector lagged behind Milvus and Qdrant in search speed which halted further development.
+                Conducted an experiment on an architecture on PostgreSQL, utilizing PGRX to write Rust-based extensions that minimized HTTP 1.1/SQL communication overhead between services. The design integrated chunking, embedding, and retrieval into a single monolithic database process using fastembed and pgvector. Performance benchmarks revealed that pgvector lagged behind Milvus and Qdrant in search speed which halted further development.
 
-                    <br />
-                    <br />
+                <br />
+                <br />
 
-                    Architected and implemented a microservice based retrieval-augmented generation (RAG) pipeline comprising multiple independent (Go-based) services that coordinated through a shared PostgreSQL database. The entire solution was deployed via Docker containers and used HTTP/1.1 and SQL for inter-service communication.
+                Architected and implemented a microservice based retrieval-augmented generation (RAG) pipeline comprising multiple independent (Go-based) services that coordinated through a shared PostgreSQL database. The entire solution was deployed via Docker containers and used HTTP/1.1 and SQL for inter-service communication.
 
-                    <br />
-                    <br />
+                <br />
 
-                    – The scraper services synchronized data from external APIs (Jira, GitLab, Confluence, Zendesk and manual uploads) into PostgreSQL. Attachments (PDF / Word / Excel documents and images) were also fetched and stored in an S3-compatible object storage (MinIO).
+                <ul>
+                    <li>The <i>scraper</i> services synchronized data from external APIs (Jira, GitLab, Confluence, Zendesk and manual uploads) into PostgreSQL. Attachments (PDF / Word / Excel documents and images) were also fetched and stored in an S3-compatible object storage (MinIO).</li>
+                    <li>The <i>processor</i> services were responsible for transforming scraped raw data into Markdown documents. This included converting HTML to Markdown; summarizing Git differences using LLMs; converting PDF / Word / Excel documents to text using IBM's Docling solution.</li>
+                    <li>The <i>validation</i> service was responsible for IDF-based document scoring, which involved summing the top N highest ranking IDF terms in each of the generated Markdown documents. Only documents exceeding a predefined threshold were retained for further processing.</li>
+                    <li>The <i>chunking</i> service that partitioned documents into optimized fragments for embedding, employing an algorithm that tried to reach the minimum chunk size by slicing between paragraphs, sentences, words or characters in descending priority.</li>
+                    <li>The <i>embedding</i> services generating vector representations: a dense embedding service using Hugging Face TEI (with recent Qwen models) and a sparse embedding service powered by a custom-built BM25 ranking model with single-pass wordification algorithm and TF-IDF dictionary construction.</li>
+                    <li>The <i>indexer</i> service that exported embeddings from PostgreSQL to Qdrant or Milvus vector databases for efficient retrieval.</li>
+                    <li>The <i>proxy</i> service that performed hybrid search (through the indexer service) and implemented the de facto OpenAI LLM interface, enabling any third-party UI to interact with it as a standard LLM.</li>
+                </ul>
 
-                    <br />
+                <br />
 
-                    – The processor services were responsible for transforming scraped raw data into Markdown documents. This included converting HTML to Markdown; summarizing Git differences using LLMs; converting PDF / Word / Excel documents to text using IBM's Docling solution.
+                As the RAG pipeline matured, <i>gonokia</i>, a repository of reusable Go packages for cross-project code sharing was published. The most notable package was <i>archive</i>, which solved the algorithmically complex challenge of orchestrating multiple concurrent streams into a single stream, enabling parallel log collection from K8s nodes and on-the-fly merging the incoming log streams into a single tape archive (TAR or ZIP). Another key innovation was the <i>httpdump</i> package, providing a transparent HTTP transport middleware for capturing, dumping and replaying HTTP network communication. Additionally, reusable API clients for Jira, GitLab, Confluence and Zendesk were built.
 
-                    <br />
+                <br />
+                <br />
 
-                    – The validation service was responsible for IDF-based document scoring, which involved summing the top N highest ranking IDF terms in each of the generated Markdown documents. Only documents exceeding a predefined threshold were retained for further processing.
-
-                    <br />
-
-                    – The chunking service that partitioned documents into optimized fragments for embedding, employing an algorithm that tried to reach the minimum chunk size by slicing between paragraphs, sentences, words or characters in descending priority.
-
-                    <br />
-
-                    – The embedding services generating vector representations: a dense embedding service using Hugging Face TEI (with recent Qwen models) and a sparse embedding service powered by a custom-built BM25 ranking model with single-pass wordification algorithm and TF-IDF dictionary construction.
-
-                    <br />
-
-                    – The indexer service that exported embeddings from PostgreSQL to Qdrant or Milvus vector databases for efficient retrieval.
-
-                    <br />
-
-                    – The proxy service that performed hybrid search (through the indexer service) and implemented the de facto OpenAI LLM interface, enabling any third-party UI to interact with it as a standard LLM.
-
-                    <br />
-                    <br />
-
-                    As the RAG pipeline matured, "gonokia", a repository of reusable Go packages for cross-project code sharing was published. The most notable package was "archive," which solved the algorithmically complex challenge of orchestrating multiple concurrent streams into a single stream, enabling parallel log collection from K8s nodes and on-the-fly merging the incoming log streams into a single tape archive (TAR or ZIP). Another key innovation was the "httpdump" package, providing a transparent HTTP transport middleware for capturing, dumping and replaying HTTP network communication. Additionally, reusable API clients for Jira, GitLab, Confluence and Zendesk were built.
-
-                    <br />
-                    <br />
-
-                    Conducted research in collaboration with <a href="https://github.com/alonsosilvaallende">Alonso Silva</a> from Bell Labs. Architected and implemented a Go-based interpreter state machine that enforced SQL language constraints during SELECT query generation, ensuring field and table consistency throughout the prediction process. The engine translated grammar rules into an inflatable graph of nodes where each node was decomposed to a token trie (utilizing a cache to reduce computational waste). Navigating the graph (by reaching one of the terminating tokens of the token trie of a node) resulted in a state change which influenced the generation of the children nodes (thus creating the foundation for semantical enforcement). The engine was integrated into a custom logits processor implementation of llama.cpp to guide LLMs toward generating grammatically and semantically correct SELECT queries.
-                </li>
-            </ul>
-            <div style="page-break-after: always;"></div>
+                Conducted research in collaboration with <b>Bell Labs</b> where <a href="https://github.com/alonsosilvaallende">Alonso Silva</a> was my mentor. Architected and implemented a Go-based interpreter state machine that enforced SQL language constraints during SELECT query generation, ensuring field and table consistency throughout the prediction process. The engine translated grammar rules into an inflatable graph of nodes where each node was decomposed to a token trie (utilizing a cache to reduce computational waste). Navigating the graph (by reaching one of the terminating tokens of the token trie of a node) resulted in a state change which influenced the generation of the children nodes (thus creating the foundation for semantical enforcement). The engine was integrated into a custom logits processor implementation of llama.cpp to guide LLMs toward generating grammatically and semantically correct SELECT queries.
+            </div>
             <p>
                 <code class="highlighter-rouge">2023 Aug – 2024 Jan</code>
                 <strong>ScoutinScience B.V.</strong>
             </p>
-            <ul>
-                <li>
-                    Designed and implemented a matchmaking system to link Dutch companies with university graduates by processing company websites and students' theses using LLMs (Llama 2nd generation, Mistral 1st generation models) and sentence embedding technologies (SBERT). The solution consisted of 4 different components: a data pipeline written in Python; a .NET-based back-end; a ReactJS-based front-end and an SQL database storing raw and processed data. Beside the main project, conducted code reviews, refined CI/CD of the company and refactored the existing architeture of user management.</li>
-            </ul>
+            <div class="reference-item">
+                Designed and implemented a matchmaking system to connect Dutch companies with university graduates by processing company websites and student theses using LLMs.
+
+                <br />
+
+                <ul>
+                    <li>As the company was a small startup where cost control was a high priority, the data pipeline was designed to be modular and easily deployable on rented machines, with an output that could be manually imported into the production service (which used PostgreSQL). This meant the pipeline was a separatein monolithic application written in Python, centered around an SQLite database. 1st, company websites were scraped using official Dutch company records; 2nd, student theses were scraped from official university databases; 3rd, websites and theses were summarized into concise natural language descriptions using LLMs; 4th, each summary was embedded using SBERT; 5th, an NxN similarity matrix was constructed between companies and students; 6th, the SQLite database was migrated to the production PostgreSQL database.</li>
+                    <li>The production service utilized a .NET backend (with PostgreSQL) and a React-based frontend. The interface enabled students to discover companies relevant to their BSc/MSc thesis topics.</li>
+                </ul>
+
+                <br />
+
+                Beyond the main project, conducted code reviews, refined the company's CI/CD pipeline, and refactored the existing user management architecture to support not only roles but also fine-grained per-user permissions.
+            </div>
             <p>
                 <code class="highlighter-rouge">2022 Mar – 2023 Jun</code>
                 <strong>Nokia Solutions and Networks Kft.</strong>
             </p>
-            <ul>
-                <li>
-                    Designed and implemented (in Go using the K8s Operator SDK) an update orchestrator and an update receiver service to handle firmware rollouts for customer-owned hardware. Developed a MinIO-based firmware storage service with synchronization between regional data centers, along with client-side tools for managing firmware entries. Mentored junior colleagues.</li>
-            </ul>
+            <div class="reference-item">
+                Designed and implemented (in Go using the K8s Operator SDK) an update orchestrator and an update receiver service to handle firmware rollouts for customer-owned hardware. Developed a MinIO-based firmware storage service with synchronization between regional data centers, along with client-side tools for managing firmware entries. Mentored junior colleagues.
+            </div>
             <p>
                 <code class="highlighter-rouge">2018 Mar – 2021 Feb</code>
                 <strong>Accedo Broadband HU Kft.</strong>
             </p>
-            <ul>
-                <li>
-                    Contributed to the development OTT client-side applications for WebOS, Tizen, and Web platforms (for OSN, NRK, ProSieben, Deutsche Telekom, and HBO) using JavaScript with an internally developed library and ReactJS.
-                    
-                    <br />
-                    <br />
+            <div class="reference-item">
+                Contributed to the development OTT client-side applications for WebOS, Tizen, and Web platforms (for OSN, NRK, ProSieben, Deutsche Telekom, and HBO) using JavaScript with an internally developed library and ReactJS.
+                
+                <br />
+                <br />
 
-                    Designed and implemented a real-time third-party API validator middleware between the application and the network layer; a Docker-powered CI/CD toolset for Tizen and WebOS; an internal service operated inside Amazon AWS to synchronize Salesforce time tracking with the BambooHR calendar.
-                </li>
-            </ul>
+                Designed and implemented a real-time third-party API validator middleware between the application and the network layer; a Docker-powered CI/CD toolset for Tizen and WebOS; an internal service operated inside Amazon AWS to synchronize Salesforce time tracking with the BambooHR calendar.
+            </div>
             <p>
                 <code class="highlighter-rouge">2014 Jul – 2015 May</code>
                 <strong>Youwon Hungary Kft.</strong>
             </p>
-            <ul>
-                <li>
-                    Contributed to the development of an online second-hand marketplace using TypeScript and AngularJS on the client side, C# and ASP.NET Web API 4 on the server side, and Entity Framework 6 for database management with Apache Lucene indexing.
-                    
-                    <br />
-                    <br />
+            <div class="reference-item">
+                Contributed to the development of an online second-hand marketplace using TypeScript and AngularJS on the client side, C# and ASP.NET Web API 4 on the server side, and Entity Framework 6 for database management with Apache Lucene indexing.
+                
+                <br />
+                <br />
 
-                    Designed and implemented a Messenger like service using WebRTC and SignalR over the existing architecture: enabling audio/video calls, text messages along with message history and synchronizing ongoing conversation tabs across devices.
-                </li>
-            </ul>
-            <h2 class="languages">Languages</h2>
-            <p>
-                Hungarian native<br />
-                English fluent<br />
-            </p>
+                Designed and implemented a Messenger like service using WebRTC and SignalR over the existing architecture: enabling audio/video calls, text messages along with message history and synchronizing ongoing conversation tabs across devices.
+            </div>
             <p>
                 <br />
             </p>
