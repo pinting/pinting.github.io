@@ -216,9 +216,9 @@ b {
             </div>
             <p style="text-align: justify;">I thrive in interdisciplinary environments, as my goal is to integrate different perspectives of existence. I believe that human development is driven more by emotion than by technology alone. I wish to believe in a society where people are not just building blocks, but individuals who actively take part in the system they form.</p>
             <p style="text-align: justify;">Born in 1996. My earliest exposure to technology was the single computer in our household without an internet connection. I spent my days playing video games and exploring the file system, clicking on every installed executable and daydreaming about a database engine that could link documents and render multimedia content seamlessly. During the summer of 2006, I stumbled upon the digital manual of the video game StarCraft written in HTML3 and was astonished by the rendering capabilities of Internet Explorer 6. Despite having no knowledge of English and no formal training, I learned HTML by dissecting the source code of the manual.</p>
-            <p style="text-align: justify;">Since that summer, my passion for learning has never faded. I have experimented with various technologies, including cross-platform desktop applications, web applications, embedded applications and video-game projects. Recently, I have focused on the advancements in natural language processing (NLP) and conducted research on constraining LLMs.</p>
+            <p style="text-align: justify;">Since that summer, my passion for learning has never faded. I have experimented with various technologies, including cross-platform desktop applications, web applications, embedded applications, video-game projects, natural language processing (NLP) applications and algorithmic challenges.</p>
+            <p style="text-align: justify;">Nowadays I am focusing on learning mathematics and writing <a href="https://github.com/pinting/oraculum">an open-source on-the-fly SQL interpreter</a>.</p>
             <p style="text-align: justify;">Besides working, I am a Linux and FOSS enthusiast; in love with literature, music, theater and cinema.</p>
-            <div style="page-break-after: always;"></div>
             <h2>References</h2>
             <p>
                 <strong>Nokia Solutions and Networks Kft.</strong>
@@ -232,48 +232,31 @@ b {
                 <br />
                 <br />
 
-                Conducted research in collaboration with Alonso Silva from <b>Bell Labs</b>. Architected and implemented Project Tiresias, a Go-based interpreter state machine that enforced SQL language constraints during SELECT query generation, ensuring field and table consistency throughout the prediction process. The engine translated grammar rules into an inflatable graph of nodes where each node was decomposed to a token trie (utilizing a cache to reduce computational waste). Navigating the graph (by reaching one of the terminating tokens of the token trie of a node) resulted in a state change which influenced the generation of the children nodes (thus creating the foundation for semantic enforcement). The engine was integrated into a custom logits processor implementation of llama.cpp to guide LLMs toward generating grammatically and semantically correct SELECT queries.
+                Conducted research about a pipeline architecture inside PostgreSQL using PGRX to write extensions in Rust that minimized HTTP 1.1/SQL communication overhead between services. The design integrated chunking, embedding and retrieval into a single monolithic database process using fastembed and pgvector.
 
                 <br />
                 <br />
 
-                Conducted research about a pipeline architecture inside PostgreSQL, utilizing PGRX to write extensions in Rust that minimized HTTP, 1.1/SQL communication overhead between services. The design integrated chunking, embedding and retrieval into a single monolithic database process using fastembed and pgvector. Performance benchmarks revealed that pgvector lagged behind Milvus and Qdrant in search speed which halted further development.
+                Designed and implemented a microservice based data warehouse megaproject along with a retrieval-augmented generation (RAG) pipeline composed of <i>14 independent Go microservices</i> that were coordinated through a shared PostgreSQL database. The entire solution was deployed via Docker and used HTTP/1.1 and SQL for inter-service communication.
 
                 <br />
                 <br />
 
-                Designed and implemented a microservice based data warehouse project along with a retrieval-augmented generation (RAG) pipeline comprising multiple independent Go services that coordinated through a shared PostgreSQL database. The entire solution was deployed via Docker containers and used HTTP/1.1 with SQL for inter-service communication.
+                Conducted research in collaboration with Alonso Silva from <b>Bell Labs</b>. Architected and implemented a Go-based predictor machine which enforced SQL grammatical and semantic constraints for basic SELECT queries, ensuring field and table consistency throughout either the user input or the generative iterations of an LLM.
 
                 <br />
-
-                <ul>
-                    <li>The scraper services synchronized data from external APIs (Jira, GitLab, Confluence, Zendesk and manual uploads) into PostgreSQL. Attachments (PDF / DOC / XLS documents and images) were also fetched and stored in an S3-compatible object storage (MinIO).</li>
-                    <li>The processor services were responsible for transforming scraped raw data into Markdown documents. This included converting HTML to Markdown; summarizing Git differences using LLMs; converting PDF / Word / Excel documents to text using IBM Docling.</li>
-                    <li>The validation service was responsible for IDF-based document scoring, which involved summing the top N highest ranking IDF terms in each of the generated Markdown documents. Only documents exceeding a predefined threshold were retained for further processing.</li>
-                    <li style="page-break-after: always;">The chunking service that partitioned documents into optimized fragments for embedding, employing an algorithm that tried to reach the minimum chunk size by slicing between paragraphs, sentences, words or characters in descending priority.</li>
-                    <li>The embedding services generating vector representations: a dense embedding service using Hugging Face TEI (with recent Qwen models) and a sparse embedding service powered by a custom-built BM25 ranking model with single-pass wordification algorithm and TF-IDF dictionary construction.</li>
-                    <li>The indexer service that exported embeddings from PostgreSQL to Qdrant or Milvus vector databases for efficient retrieval.</li>
-                    <li>The proxy service that performed hybrid search (through the indexer service) and implemented the de facto OpenAI LLM interface, enabling any third-party UI to interact with it as a standard LLM.</li>
-                </ul>
-
                 <br />
 
-                Designed and implemented gonokia, a repository of reusable Go packages for cross-project code sharing was published. The most notable package was archive, which solved the algorithmically complex challenge of orchestrating multiple concurrent streams into a single stream, enabling parallel log collection from K8s nodes and on-the-fly merging the incoming log streams into a single tape archive (TAR or ZIP). Another key innovation was the httpdump package, providing a transparent HTTP transport middleware for capturing, dumping and replaying HTTP network communication. Additionally, reusable API clients for Jira, GitLab, Confluence and Zendesk were built.
+                Designed and implemented a repository of reusable Go packages for cross-project code sharing. The most notable packages were <i>archive</i>, which solved the algorithmically complex challenge of orchestrating multiple concurrent streams into a single stream, enabling parallel log collection from K8s nodes and on-the-fly merging the incoming log streams into a single tape archive; and <i>httpdump</i>, which provided a transparent HTTP transport middleware for capturing, dumping and replaying HTTP network communication.
             </div>
             <p>
                 <strong>ScoutinScience B.V.</strong>
                 <code>2023 August – 2024 January</code>
             </p>
             <div class="reference-item">
-                Designed and implemented a matchmaking system to connect local university graduates with local companies (in the Netherlands) by processing company websites and student theses using LLMs.
+                Designed and implemented a matchmaking system to connect local university graduates with local companies (in the Netherlands) by processing company websites and student theses to construct an NxN similarity matrix that described their likeliness of sharing a mutual interest.
 
                 <br />
-
-                <ul>
-                    <li>As the company was a small startup where cost control was a high priority, the data pipeline was designed to be modular and easily deployable on rented machines, with an output that could be manually imported into the production service (which used PostgreSQL). This meant the pipeline was a separate monolithic application written in Python, centered around an SQLite database. 1st, company websites were scraped using official company records; 2nd, student theses were scraped from official university databases; 3rd, websites and theses were summarized into concise natural language descriptions using LLMs; 4th, each summary was embedded using SBERT; 5th, an NxN similarity matrix was constructed between companies and students; 6th, the SQLite database was migrated to the production PostgreSQL database.</li>
-                    <li>The production service utilized a .NET backend (with PostgreSQL) and a React-based frontend. The interface enabled students to discover companies relevant to their BSc/MSc thesis topics.</li>
-                </ul>
-
                 <br />
 
                 Beyond the main project, conducted code reviews, refined the company's CI/CD pipeline and refactored the existing user management architecture to support not only roles but also fine-grained per-user permissions by forking and pruning AuthPermissions.AspNetCore library.
@@ -290,7 +273,7 @@ b {
                 <code>2018 March – 2021 February</code>
             </p>
             <div class="reference-item">
-                Contributed to the development OTT client-side applications for WebOS, Tizen and Web platforms (for Yle, OSN, NRK, ProSieben, Deutsche Telekom and HBO) using JavaScript with an internally developed library and ReactJS. At peak supported ~10 different applications with bug fixes as a support engineer.
+                Contributed to the development OTT client-side applications for WebOS, Tizen and Web platforms (for Yle, OSN, NRK, ProSieben, Deutsche Telekom and HBO) using JavaScript with an internally developed library and ReactJS. At peak <i>supported 10 different applications</i> with bug fixes as a support engineer.
                 
                 <br />
                 <br />
