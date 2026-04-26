@@ -237,12 +237,12 @@ b {
                 <br />
                 <br />
 
-                Designed and implemented a microservice based data warehouse megaproject along with a retrieval-augmented generation (RAG) pipeline composed of <i>14 independent Go microservices</i> that were coordinated through a shared PostgreSQL database. The entire solution was deployed via Docker and used HTTP/1.1 and SQL for inter-service communication.
+                Designed and implemented a microservice based data warehouse megaproject along with a retrieval-augmented generation (RAG) pipeline composed of <i>14 independent Go microservices</i> that were coordinated through a shared PostgreSQL database. The most notable challenges were converting every incoming document to Markdown; writing a reusable TF-IDF library which validated documents and produced their sparse embeddings; implementing a chunking service which broke up text along natural language separators (between paragraphs, sentences or words); and figuring out the right architecture to universally support any dense embedding model, any vector database and any third-party front-end UI. The entire solution was deployed via Docker and used HTTP/1.1 and SQL for inter-service communication.
 
                 <br />
                 <br />
 
-                Conducted research in collaboration with Alonso Silva from <b>Bell Labs</b>. Architected and implemented a Go-based predictor machine which enforced SQL grammatical and semantic constraints for basic SELECT queries, ensuring field and table consistency throughout either the user input or the generative iterations of an LLM.
+                Conducted research in collaboration with Alonso Silva from <b>Bell Labs</b>. Architected and implemented a Go-based predictor machine which <i>enforced SQL grammatical and semantic constraints</i> for basic SELECT queries, ensuring field and table consistency throughout either the user input or the generative iterations of an LLM.
 
                 <br />
                 <br />
@@ -254,7 +254,7 @@ b {
                 <code>2023 August – 2024 January</code>
             </p>
             <div class="reference-item">
-                Designed and implemented a matchmaking system to connect local university graduates with local companies (in the Netherlands) by processing company websites and student theses to construct an NxN similarity matrix that described their likeliness of sharing a mutual interest.
+                Designed and implemented a matchmaking system to connect local university graduates with local companies (in the Netherlands) by processing company websites and student theses to construct <i>an NxN similarity matrix</i> that described their likeliness of sharing a mutual interest.
 
                 <br />
                 <br />
