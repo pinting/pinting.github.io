@@ -5,7 +5,7 @@
     <meta name="author" content="Tornyi Dénes">
     <meta name="keywords" content="tornyi, denes, dénes, pinting">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Denes Tornyi's CV</title>
+    <title>Dénes Tornyi's CV</title>
     <style>
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -215,37 +215,53 @@ b {
                 </div>
             </div>
             <p style="text-align: justify;">I thrive in interdisciplinary environments, as my goal is to integrate different perspectives of existence. I believe that human development is driven more by emotion than by technology alone. I wish to believe in a society where people are not just building blocks, but individuals who actively take part in the system they form.</p>
-            <p style="text-align: justify;">Born in 1996. My earliest exposure to technology was the single computer in our household without an internet connection. I spent my days playing video games and exploring the file system, clicking on every installed executable and daydreaming about a database engine that could link documents and render multimedia content seamlessly. During the summer of 2006, I stumbled upon the digital manual of the video game StarCraft written in HTML3 and was astonished by the rendering capabilities of Internet Explorer 6. Despite having no knowledge of English and no formal training, I learned HTML by dissecting the source code of the manual.</p>
+            <p style="text-align: justify;">Born in 1996. My earliest exposure to technology was the single computer in our household without an internet connection. I spent my days playing video games and exploring the file system, clicking on every installed executable and daydreaming about a database engine that could link documents and render multimedia content seamlessly. During the summer of 2006, I stumbled upon the digital manual of the video game StarCraft written in HTML 3 and was astonished by the rendering capabilities of Internet Explorer 6. Despite having no knowledge of English and no formal training, I learned HTML by dissecting the source code of the manual.</p>
             <p style="text-align: justify;">Since that summer, my passion for learning has never faded. I have experimented with various technologies, including cross-platform desktop applications, web applications, embedded applications, video-game projects, natural language processing (NLP) applications and algorithmic challenges.</p>
-            <p style="text-align: justify;">Nowadays I am focusing on mathematics, building bicycles and writing <a href="https://github.com/pinting/oraculum">an open-source on-the-fly SQL interpreter</a>.</p>
-            <p style="text-align: justify;">Besides working, I am a Linux and FOSS enthusiast; in love with literature, music, theater and cinema.</p>
+            <p style="text-align: justify;">Nowadays I am focusing on mathematics, building bicycles and writing open-source software.</p>
+            <p style="text-align: justify;">Besides working, I am a Linux and FOSS enthusiast, in love with literature, music, theater and cinema.</p>
             <div style="page-break-after: always;"></div>
-            <h2>Education</h2>
+            <!--
+                <h2>Education</h2>
+                <p>
+                    <strong>Eötvös Loránd University</strong>
+                    <code>Mathematics</code>
+                    <code>September 2026 –</code>
+                </p>
+                <div class="reference-item">
+                    Calculus, linear systems, complex numbers and polynomials, the arithmetic of integers, modular congruences, counting principles, recurrences and graph theory.
+                </div>
+                <p>
+                    <strong>Babeș-Bolyai University</strong>
+                    <code>Philosophy</code>
+                    <code>September 2021 – February 2022</code>
+                </p>
+                <div class="reference-item">
+                    Western philosophy from the Pre-Socratics through the systematic frameworks of Plato and Aristotle, the theology of St. Augustine, jumping to the Early Modern epistemological turn, contrasting Cartesian dualism with Hume's empiricism before culminating in Kant's transcendental idealism. Explored contemporary philosophy by debating artificial consciousness via the Turing test and the Chinese Room Argument.
+                </div>
+                <p>
+                    <strong>Budapest University of Technology and Economics</strong>
+                    <code>Software Engineering</code>
+                    <code>September 2015 – February 2017, September 2024 – February 2025</code>
+                </p>
+                <div class="reference-item">
+                    Computer architecture from low to high level: PC and CPU architecture (FPGA programming), assembly languages, responsibilities of operating systems (focusing on scheduling, memory management and file systems), user-space application design (on desktop, web and mobile platforms: C, C++, Java, C#, JavaScript), embedded application design (IoT), networking (IP, TCP, UDP, application layer protocols) and databases (SQL, NoSQL). Introduction to information theory: entropy, cryptography (RSA and ECC), error correction (block codes, CRCs, Hamming and Reed-Solomon codes). Introduction to artificial intelligence: search algorithms, first-order logic, machine learning (Bayesian networks, MDPs, NNs, CNNs and RNNs) and natural language processing (TF-IDF, Word2Vec, GloVe and Transformers).
+                </div>
+                <div style="page-break-after: always;"></div>
+            -->
+            <h2>Projects</h2>
             <p>
-                <strong>Eötvös Loránd University</strong>
-                <code>Mathematics</code>
-                <code>September 2026 –</code>
+                <strong>oraculum</strong>
+                <code><a href="https://github.com/pinting/oraculum">github.com/pinting/oraculum</a></code>
+                <code>December 2025 –</code>
             </p>
             <div class="reference-item">
-                Upcoming studies will focus on number theory, graph theory, probability theory, discrete mathematics and computational theory.
+                An SQL autocomplete framework which guarantees grammatical and semantic correctness for a subset of the language without any post-validation. The performance-heavy operations are implemented in a Rust kernel and exposed to Python through PyO3, in which the light operations are written (expanding the grammatical tree of SQL and managing the semantic context).
+
+                <br />
+                <br />
+
+                The framework is composed of the following layers: keywords as token-level DFAs built by a single Aho-Corasick sweep of the vocabulary; regular expressions as lazy DFAs over Brzozowski derivatives; identifiers as difference automata decided at acceptance, without product construction; the SQL grammar as an NFA determinized on the fly by subset construction; the schema semantics as Boolean polynomials over GF(2); and joins as vertex contraction over the foreign key graph.
             </div>
-            <p>
-                <strong>Babeș-Bolyai University</strong>
-                <code>Philosophy</code>
-                <code>September 2021 – February 2022</code>
-            </p>
-            <div class="reference-item">
-                Western philosophy from the Pre-Socratics through the systemic frameworks of Plato and Aristotle, the theology of St. Augustine, jumping to the Early Modern epistemological turn, contrasting Cartesian dualism with Hume's empiricism before culminating in Kant's transcendental idealism. Explored contemporary philosophy by debating artificial consciousness via the Turing test and the Chinese Room Argument.
-            </div>
-            <p>
-                <strong>Budapest University of Technology and Economics</strong>
-                <code>Software Engineering</code>
-                <code>September 2015 – February 2017, September 2024 – February 2025</code>
-            </p>
-            <div class="reference-item">
-                Computer architecture from low to high level: PC and CPU architecture (FPGA programming), Assembly languages, responsibilities of operating systems (focusing on scheduling, memory management and file systems), user space application design (on desktop, web and mobile platforms - C, C++, Java, C#, JavaScript), embedded application design (IoT), networking (IP, TCP, UDP, application layer protocols) and databases (SQL, NoSQL). Introduction to information theory: entropy, cryptography (RSA and ECC), error correction (Block codes, CRCs, Hamming & Reed-Solomon codes). Introduction to artificial intelligence: search algorithms, first-order logic, machine learning (Bayesian networks, MDPs, NNs, CNNs and RNNs) and natural language processing (TF-IDF, Word2Vec, GloVe and Transformers).
-            </div>
-            <div style="page-break-after: always;"></div>
             <h2>References</h2>
             <p>
                 <strong>Nokia Solutions and Networks Kft.</strong>
@@ -254,27 +270,27 @@ b {
                 <code>Presentations: <a href="https://alonsosilvaallende.github.io/automata-guided-generation">Structured code generation for domain-specific languages</a></code>
             </p>
             <div class="reference-item">
-                Returned to Nokia with the goal of continuing my research on LLMs and RAG systems in Riku Kaura-Aho's team. Established  Project Octopus as a centralized project space for publishing and inner-sourcing NLP solutions across the company. Collaborated with various departments to streamline and reduce the internal chaos within R&D operations.
+                Returned to Nokia with the goal of continuing my research on LLMs and RAG systems in Riku Kaura-Aho's team. Established Project Octopus as a centralized project space for publishing and inner-sourcing NLP solutions across the company. Collaborated with various departments to streamline and reduce the internal chaos within R&D operations.
 
                 <br />
                 <br />
 
-                Conducted research about a pipeline architecture inside PostgreSQL using PGRX to write extensions in Rust that minimized HTTP 1.1/SQL communication overhead between services. The design integrated chunking, embedding and retrieval into a single monolithic database process using fastembed and pgvector.
+                Conducted research on a pipeline architecture inside PostgreSQL using PGRX to write extensions in Rust that minimized HTTP/1.1/SQL communication overhead between services. The design integrated chunking, embedding and retrieval into a single monolithic database process using fastembed and pgvector.
 
                 <br />
                 <br />
 
-                Designed and implemented a microservice based data warehouse megaproject along with a retrieval-augmented generation (RAG) pipeline composed of <i>14 independent Go microservices</i> that were coordinated through a shared PostgreSQL database. The most notable challenges were converting every incoming document to Markdown; writing a reusable TF-IDF library which validated documents and produced their sparse embeddings; implementing a chunking service which broke up text along natural language separators (between paragraphs, sentences or words); and figuring out the right architecture to universally support any dense embedding model, any vector database and any third-party front-end UI. The entire solution was deployed via Docker and used HTTP/1.1 and SQL for inter-service communication.
+                Designed and implemented a microservice-based data warehouse megaproject along with a retrieval-augmented generation (RAG) pipeline composed of <i>14 independent Go microservices</i> that were coordinated through a shared PostgreSQL database. The most notable challenges were converting every incoming document to Markdown; writing a reusable TF-IDF library which validated documents and produced their sparse embeddings; implementing a chunking service which broke up text along natural language separators (between paragraphs, sentences or words); and figuring out the right architecture to universally support any dense embedding model, any vector database and any third-party front-end UI. The entire solution was deployed via Docker and used HTTP/1.1 and SQL for inter-service communication.
 
                 <br />
                 <br />
 
-                Conducted research in collaboration with Alonso Silva from <b>Bell Labs</b>. Architected and implemented a Go-based predictor machine which <i>enforced SQL grammatical and semantic constraints</i> for basic SELECT queries, ensuring field and table consistency throughout either the user input or the generative iterations of an LLM.
+                Designed and implemented a repository of reusable Go packages for cross-project code sharing. The most notable packages were <i>archive</i>, which solved the algorithmically complex challenge of orchestrating multiple concurrent streams into a single stream, enabling parallel log collection from K8s nodes and on-the-fly merging of the incoming log streams into a single tape archive; and <i>httpdump</i>, which provided a transparent HTTP transport middleware for capturing, dumping and replaying HTTP network communication.
 
                 <br />
                 <br />
 
-                Designed and implemented a repository of reusable Go packages for cross-project code sharing. The most notable packages were <i>archive</i>, which solved the algorithmically complex challenge of orchestrating multiple concurrent streams into a single stream, enabling parallel log collection from K8s nodes and on-the-fly merging the incoming log streams into a single tape archive; and <i>httpdump</i>, which provided a transparent HTTP transport middleware for capturing, dumping and replaying HTTP network communication.
+                Conducted research for Alonso Silva from <b>Bell Labs</b> on predictor machines for <i>enforcing grammatical and semantic constraints on domain-specific languages</i>.
             </div>
             <div style="page-break-after: always;"></div>
             <p>
@@ -282,7 +298,7 @@ b {
                 <code>August 2023 – January 2024</code>
             </p>
             <div class="reference-item">
-                Designed and implemented a matchmaking system to connect local university graduates with local companies (in the Netherlands) by processing company websites and student theses to construct <i>an NxN similarity matrix</i> that described their likeliness of sharing a mutual interest.
+                Designed and implemented a matchmaking system to connect local university graduates with local companies (in the Netherlands) by processing company websites and student theses to construct <i>an NxN similarity matrix</i> that described their likelihood of sharing a mutual interest.
 
                 <br />
                 <br />
@@ -301,12 +317,12 @@ b {
                 <code>March 2018 – February 2021</code>
             </p>
             <div class="reference-item">
-                Contributed to the development OTT client-side applications for WebOS, Tizen and Web platforms (for Yle, OSN, NRK, ProSieben, Deutsche Telekom and HBO) using JavaScript with an internally developed library and ReactJS. At peak <i>supported 10 different applications</i> with bug fixes as a support engineer.
+                Contributed to the development of OTT client-side applications for webOS, Tizen and web platforms (for Yle, OSN, NRK, ProSieben, Deutsche Telekom and HBO) using JavaScript with an internally developed library and ReactJS. At peak, <i>supported 10 different applications</i> with bug fixes as a support engineer.
                 
                 <br />
                 <br />
 
-                Designed and implemented a real-time third-party API validator middleware between the application and the network layer; containerized CI/CD toolset for Tizen and WebOS; an internal service operated inside Amazon AWS to synchronize Salesforce time tracking with the BambooHR calendar.
+                Designed and implemented a real-time third-party API validator middleware between the application and the network layer; a containerized CI/CD toolset for Tizen and webOS; and an internal service operated inside Amazon AWS to synchronize Salesforce time tracking with the BambooHR calendar.
             </div>
             <p>
                 <strong>Youwon Hungary Kft.</strong>
@@ -318,7 +334,7 @@ b {
                 <br />
                 <br />
 
-                Designed and implemented a Facebook Messenger like service using WebRTC and SignalR over the existing architecture: enabling audio/video calls, text messages along with their message history and the synchronization of ongoing conversation tabs across devices.
+                Designed and implemented a Facebook Messenger-like service using WebRTC and SignalR over the existing architecture: enabling audio/video calls, text messages along with their message history and the synchronization of ongoing conversation tabs across devices.
             </div>
             <p>
                 <br />
