@@ -226,42 +226,40 @@ b {
                 <code>December 2025 –</code>
             </p>
             <div class="reference-item">
-                An SQL autocomplete framework which guarantees grammatical and semantic correctness for a subset of the language without any post-validation. The performance-heavy operations are implemented in a Rust kernel and exposed to Python through PyO3, in which the light operations are written (expanding the grammatical tree of SQL and managing the semantic context).
+                An SQL incremental parser and enforcer which guarantees grammatical and semantic correctness for a subset of the language without any post-validation. The performance-heavy operations are implemented in a Rust kernel and exposed to Python through PyO3, in which the light operations are written (expanding the grammatical tree of SQL and managing the semantic context).
 
                 <br />
                 <br />
 
-                The framework is composed of the following layers: keywords as token-level DFAs built by a single Aho-Corasick sweep of the vocabulary; regular expressions as lazy DFAs over Brzozowski derivatives; identifiers as difference automata decided at acceptance, without product construction; the SQL grammar as an NFA determinized on the fly by subset construction; the schema semantics as Boolean polynomials over GF(2); and joins as vertex contraction over the foreign key graph.
+                The parser is composed of the following layers: keywords as token-level DFAs built by a single Aho-Corasick sweep of the vocabulary; regular expressions as lazy DFAs over Brzozowski derivatives; identifiers as difference automata decided at acceptance, without product construction; the SQL grammar as an NFA determinized on the fly by subset construction; the schema semantics as Boolean polynomials over GF(2); and joins as vertex contraction over the foreign key graph.
             </div>
             <div style="page-break-after: always;"></div>
-            <!--
-                <h2>Education</h2>
-                <p>
-                    <strong>Eötvös Loránd University</strong>
-                    <code>Mathematics</code>
-                    <code>September 2026 –</code>
-                </p>
-                <div class="reference-item">
-                    Calculus, linear systems, complex numbers and polynomials, the arithmetic of integers, modular congruences, counting principles, recurrences and graph theory.
-                </div>
-                <p>
-                    <strong>Babeș-Bolyai University</strong>
-                    <code>Philosophy</code>
-                    <code>September 2021 – February 2022</code>
-                </p>
-                <div class="reference-item">
-                    Western philosophy from the Pre-Socratics through the systematic frameworks of Plato and Aristotle, the theology of St. Augustine, jumping to the Early Modern epistemological turn, contrasting Cartesian dualism with Hume's empiricism before culminating in Kant's transcendental idealism. Explored contemporary philosophy by debating artificial consciousness via the Turing test and the Chinese Room Argument.
-                </div>
-                <p>
-                    <strong>Budapest University of Technology and Economics</strong>
-                    <code>Software Engineering</code>
-                    <code>September 2015 – February 2017, September 2024 – February 2025</code>
-                </p>
-                <div class="reference-item">
-                    Computer architecture from low to high level: PC and CPU architecture (FPGA programming), assembly languages, responsibilities of operating systems (focusing on scheduling, memory management and file systems), user-space application design (on desktop, web and mobile platforms: C, C++, Java, C#, JavaScript), embedded application design (IoT), networking (IP, TCP, UDP, application layer protocols) and databases (SQL, NoSQL). Introduction to information theory: entropy, cryptography (RSA and ECC), error correction (block codes, CRCs, Hamming and Reed-Solomon codes). Introduction to artificial intelligence: search algorithms, first-order logic, machine learning (Bayesian networks, MDPs, NNs, CNNs and RNNs) and natural language processing (TF-IDF, Word2Vec, GloVe and Transformers).
-                </div>
-                <div style="page-break-after: always;"></div>
-            -->
+            <h2>Education</h2>
+            <p>
+                <strong>Eötvös Loránd University</strong>
+                <code>Mathematics</code>
+                <code>September 2026 –</code>
+            </p>
+            <div class="reference-item">
+                Calculus, linear systems, complex numbers and polynomials, the arithmetic of integers, modular congruences, counting principles, recurrences and graph theory.
+            </div>
+            <p>
+                <strong>Babeș-Bolyai University</strong>
+                <code>Philosophy</code>
+                <code>September 2021 – February 2022</code>
+            </p>
+            <div class="reference-item">
+                Western philosophy from the Pre-Socratics through the systematic frameworks of Plato and Aristotle, the theology of St. Augustine, jumping to the Early Modern epistemological turn, contrasting Cartesian dualism with Hume's empiricism before culminating in Kant's transcendental idealism. Explored contemporary philosophy by debating artificial consciousness via the Turing test and the Chinese Room Argument.
+            </div>
+            <p>
+                <strong>Budapest University of Technology and Economics</strong>
+                <code>Software Engineering</code>
+                <code>September 2015 – February 2017, September 2024 – February 2025</code>
+            </p>
+            <div class="reference-item">
+                Computer architecture from low to high level: PC and CPU architecture (FPGA programming), assembly languages, responsibilities of operating systems (focusing on scheduling, memory management and file systems), user-space application design (on desktop, web and mobile platforms: C, C++, Java, C#, JavaScript), embedded application design (IoT), networking (IP, TCP, UDP, application layer protocols) and databases (SQL, NoSQL). Introduction to information theory: entropy, cryptography (RSA and ECC), error correction (block codes, CRCs, Hamming and Reed-Solomon codes). Introduction to artificial intelligence: search algorithms, first-order logic, machine learning (Bayesian networks, MDPs, NNs, CNNs and RNNs) and natural language processing (TF-IDF, Word2Vec, GloVe and Transformers).
+            </div>
+            <div style="page-break-after: always;"></div>
             <h2>References</h2>
             <p>
                 <strong>Nokia Solutions and Networks Kft.</strong>
