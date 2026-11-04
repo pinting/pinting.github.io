@@ -41,7 +41,7 @@ body:not(.ready) {
     margin: 0;
     text-decoration: none;
     color: #fff;
-    text-shadow: 0 0 4px #002363
+    text-shadow: 0 0 3px #002363
 }
 
 .about h1 {
