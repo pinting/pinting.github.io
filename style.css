@@ -41,8 +41,7 @@ body:not(.ready) {
     margin: 0;
     text-decoration: none;
     color: #fff;
-    /* same blue as the cloud outlines */
-    text-shadow: 0 0 3px #0058f8;
+    text-shadow: 0 0 4px #002363
 }
 
 .about h1 {
@@ -56,8 +55,8 @@ body:not(.ready) {
     list-style: none;
     padding: 0;
     margin: 0 0 0 2px;
-    font-style: italic;
-    font-weight: 100;
+    font-style: oblique;
+    font-weight: 500;
     font-size: 0.8em;
     line-height: 1.5;
 }
