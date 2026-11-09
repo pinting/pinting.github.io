@@ -22,6 +22,10 @@ export class Renderer
         // The intro draws the world off screen, then shows it coarsely pixelated.
         this.scene = document.createElement("canvas");
         this.mosaic = document.createElement("canvas");
+
+        // Sprites pre-scaled to their on-screen size, per source image
+        this.cache = new WeakMap();
+        this.cacheScale = 0;
     }
 
     // Fit the world to the canvas; `textBottom` is where the name and links end
@@ -66,11 +70,24 @@ export class Renderer
         {
             this.clouds.seed(this.view.worldW);
         }
+
+        if(s * dpr !== this.cacheScale)
+        {
+            this.cache = new WeakMap();
+            this.cacheScale = s * dpr;
+        }
     }
 
+    // Mario stays at a fixed spot on screen. The camera only moves in whole
+    // device pixels, so the art lands on the same pixel grid every frame and
+    // doesn't shimmer at fractional scales (most phones).
     follow(mario)
     {
-        this.camX = mario.x - this.view.worldW * 0.3;
+        const k = this.view.s * this.view.dpr; // Device px per world px
+
+        this.marioX = this.view.worldW * 0.3;
+        this.camPx = Math.round((mario.x - this.marioX) * k); // Whole device px
+        this.camX = this.camPx / k;
     }
 
     get left()
@@ -126,14 +143,20 @@ export class Renderer
         screen.globalAlpha = 1;
     }
 
+    // Screen coordinates are whole device pixels (the world is drawn without a
+    // scaling transform), so the same thing always covers the same pixels
     px(v)
     {
-        return Math.round(v * this.view.dpr) / this.view.dpr; // Snap to device pixels
+        return Math.round(v * this.view.dpr);
     }
 
+    // Round in world space, then subtract the whole-pixel camera, so a given
+    // x always lands on the same pixel edge relative to the scene
     sx(x)
     {
-        return this.px((x - this.camX) * this.view.s);
+        const { s, dpr } = this.view;
+
+        return Math.round(x * s * dpr) - this.camPx;
     }
 
     sy(y)
@@ -146,23 +169,60 @@ export class Renderer
         return x1 >= this.left - 4 && x0 <= this.right + 4;
     }
 
+    // Part of an image scaled to dw x dh device px, made once and kept. Scaling
+    // pixel art at a fractional ratio leaves some pixels on a rounding knife
+    // edge; done per frame at a moving position, those pixels flip between
+    // 1 and 2 px wide and the art wiggles. Copying a pre-scaled image 1:1 at
+    // whole-pixel positions keeps every frame identical.
+    scaled(image, srcX, srcY, sw, sh, dw, dh)
+    {
+        let byImage = this.cache.get(image);
+
+        if(!byImage)
+        {
+            this.cache.set(image, byImage = new Map());
+        }
+
+        const key = `${srcX},${srcY},${sw},${sh},${dw},${dh}`;
+        let c = byImage.get(key);
+
+        if(!c)
+        {
+            c = document.createElement("canvas");
+            c.width = Math.max(1, dw);
+            c.height = Math.max(1, dh);
+
+            const g = c.getContext("2d");
+
+            g.imageSmoothingEnabled = false;
+            g.drawImage(image, srcX, srcY, sw, sh, 0, 0, dw, dh);
+            byImage.set(key, c);
+        }
+
+        return c;
+    }
+
+    // Size in device px of `v` world px; rounded up so neighbouring tiles
+    // overlap by a pixel rather than leave a gap
+    size(v)
+    {
+        return Math.ceil(v * this.view.s * this.view.dpr - 1e-6);
+    }
+
     // Draw part of an image to a world-space box (w, h default to the source size)
     blit(image, srcX, srcY, sw, sh, x, y, w = sw, h = sh)
     {
-        const X = this.sx(x);
-        const Y = this.sy(y);
-
-        this.g.drawImage(image, srcX, srcY, sw, sh, X, Y, this.sx(x + w) - X, this.sy(y + h) - Y);
+        this.g.drawImage(this.scaled(image, srcX, srcY, sw, sh, this.size(w), this.size(h)), this.sx(x), this.sy(y));
     }
 
     drawWorld(world, mario, t)
     {
         const { g, view } = this;
 
-        g.setTransform(view.dpr, 0, 0, view.dpr, 0, 0);
+        g.setTransform(1, 0, 0, 1, 0, 0);
         g.imageSmoothingEnabled = false;
         g.fillStyle = COLORS.sky;
-        g.fillRect(0, 0, view.w, view.h);
+        g.fillRect(0, 0, this.canvas.width, this.canvas.height);
         this.drawClouds(t);
 
         for(const o of world.palms)
@@ -233,10 +293,11 @@ export class Renderer
 
         for(const c of this.clouds.positions(this.camX, t, view.skyTop, view.skyH))
         {
-            const X = this.px(c.x * s);
-            const Y = this.px(c.y * s);
+            // Fixed size, whole-pixel position: the cloud moves without its
+            // pixels resampling (wiggling) from frame to frame
+            const img = this.scaled(c.img, 0, 0, c.w, c.h, this.size(c.w), this.size(c.h));
 
-            g.drawImage(c.img, X, Y, this.px((c.x + c.w) * s) - X, this.px((c.y + c.h) * s) - Y);
+            g.drawImage(img, this.px(c.x * s), this.px(c.y * s));
         }
     }
 
@@ -297,7 +358,7 @@ export class Renderer
         const gw = ground.width;
         const gh = ground.height;
 
-        for(let y = T; this.sy(y) < this.view.h; y += gh)
+        for(let y = T; this.sy(y) < this.canvas.height; y += gh)
         {
             for(let x = Math.floor(this.left / gw) * gw; x < this.right + gw; x += gw)
             {
@@ -308,36 +369,39 @@ export class Renderer
 
     drawHole(o)
     {
-        const { g, view } = this;
+        const { g } = this;
+        const H = this.canvas.height;
         const X0 = this.sx(o.x0);
         const X1 = this.sx(o.x1);
         const Y = this.sy(0);
 
         g.fillStyle = COLORS.sky;
-        g.fillRect(X0, Y, X1 - X0, view.h - Y);
+        g.fillRect(X0, Y, X1 - X0, H - Y);
         g.fillStyle = "#000"; // The cut dirt walls
-        g.fillRect(this.sx(o.x0 - 2), Y, X0 - this.sx(o.x0 - 2), view.h - Y);
-        g.fillRect(X1, Y, this.sx(o.x1 + 2) - X1, view.h - Y);
+        g.fillRect(this.sx(o.x0 - 2), Y, X0 - this.sx(o.x0 - 2), H - Y);
+        g.fillRect(X1, Y, this.sx(o.x1 + 2) - X1, H - Y);
     }
 
     drawWater(o, t)
     {
         const { g, view } = this;
+        const H = this.canvas.height;
         const X0 = this.sx(o.x0);
         const X1 = this.sx(o.x1);
         const Y = this.sy(view.water);
+        const lip = this.px(4); // Room for the ripples above the waterline
 
-        if(Y >= view.h)
+        if(Y >= H)
         {
             return;
         }
 
         g.save();
         g.beginPath();
-        g.rect(X0, Y - 4, X1 - X0, view.h - Y + 4);
+        g.rect(X0, Y - lip, X1 - X0, H - Y + lip);
         g.clip();
 
-        const flow = (t * 28) % 64;
+        const flow = Math.floor(t * 14) % 32 * 2; // Steps of one art pixel
 
         for(let x = Math.floor(o.x0 / 64) * 64 - 64; x < o.x1 + 64; x += 64)
         {
@@ -347,13 +411,19 @@ export class Renderer
         const body = this.sy(view.water + 12);
 
         g.fillStyle = COLORS.water;
-        g.fillRect(X0, body, X1 - X0, view.h - body);
+        g.fillRect(X0, body, X1 - X0, H - body);
         g.restore();
     }
 
     drawMario(mario)
     {
-        this.blit(this.sprites.mario, mario.frame * MARIO.w, 0, MARIO.w, MARIO.h,
-            Math.round(mario.x), Math.round(mario.y) - MARIO.h);
+        // Fixed size at a whole-pixel position, so he doesn't wobble against
+        // the screen or resample while running
+        const { s } = this.view;
+
+        const img = this.scaled(this.sprites.mario, mario.frame * MARIO.w, 0, MARIO.w, MARIO.h,
+            this.size(MARIO.w), this.size(MARIO.h));
+
+        this.g.drawImage(img, this.px(this.marioX * s), this.sy(mario.y - MARIO.h));
     }
 }
